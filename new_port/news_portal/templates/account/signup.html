@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Зарегистрируйтесь</h1>
+
+  {% if socialaccount_providers %}
+    <p>Вы можете зарегистрироваться через один из следующих сервисов:</p>
+    <div class="socialaccount_ballot">
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <p>Или зарегистрируйтесь через email:</p>
+  <form method="post" action="{% url 'account_signup' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрируйтесь</button>
+  </form>
+
+  <p>Уже зарегистрированы? <a href="{% url 'account_login' %}">Войдите</a>.</p>
+{% endblock %}

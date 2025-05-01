@@ -1,0 +1,15 @@
+<!-- news/templates/news/profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редактировать профиль</title>
+</head>
+<body>
+    <h1>Редактировать профиль</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

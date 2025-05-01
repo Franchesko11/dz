@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+</head>
+<body>
+    <h2>Вход в систему</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+    <p>Нет аккаунта? <a href="{% url 'account_signup' %}">Зарегистрироваться</a></p>
+
+    <!-- Добавляем кнопку для входа через Yandex -->
+    <h3>Или войдите через:</h3>
+    <a href="{% url 'socialaccount_login' %}?provider=yandex">Войти через Yandex</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- news/templates/news/post_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список постов</title>
+</head>
+<body>
+    <h1>Список постов</h1>
+    {% if perms.news.add_post %}
+        <a href="{% url 'news:post_create' %}">
+            <button>Создать статью или новость</button>
+        </a>
+    {% endif %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                {{ post.title }} - {{ post.author }} ({{ post.post_type }})
+                {% if perms.news.change_post %}
+                    <a href="{% url 'news:post_edit' post.pk %}">Редактировать</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Нет постов</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'news:home' %}">На главную</a>
+</body>
+</html>
